@@ -29,6 +29,7 @@ export class BudgetService {
 
       if(itemYear === todayYear && itemMonth === todayMonth){
         this.thisMonthItems.push({
+          id: item.id,
           val:item.val,
           date: item.date,
           description: item.description,

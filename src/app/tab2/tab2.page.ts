@@ -42,6 +42,7 @@ export class Tab2Page {
 
       if(itemYear === todayYear && itemMonth === todayMonth){
         this.thisMonthItems.push({
+          id: item.id,
           val:item.val,
           date: item.date,
           description: item.description,
@@ -57,5 +58,13 @@ export class Tab2Page {
     this.thisMonthItems.filter((item => item.type === 'هزینه')).forEach((x)=>{
       this.sumExpenses += x.val;
   });
+  }
+
+
+  remove(id: number){
+    const index = this.items.findIndex(x=>x.id === id);
+    this.items.splice(index,1);
+    this.storage.set('items',this.items);
+    this.ionViewDidEnter();
   }
 }

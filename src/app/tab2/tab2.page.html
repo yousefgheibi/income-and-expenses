@@ -47,7 +47,7 @@
                 <td>{{item.description}}</td>
                 <td>{{item.date | persianDate }}</td>
                 <td>
-                    <ion-icon name="close-outline"></ion-icon>
+                    <ion-icon name="close-outline" (click)="remove(item.id)"></ion-icon>
                 </td>
             </tr>
         </tbody>

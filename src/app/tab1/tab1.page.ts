@@ -31,6 +31,7 @@ export class Tab1Page {
   }
 
   register(type: string){
+    const lastItem = this.items[this.items.length-1];
     let ftype: string;
     if(type === 'income'){
       ftype = 'درآمد';
@@ -38,6 +39,7 @@ export class Tab1Page {
       ftype = 'هزینه';
     }
     this.items.push({
+      id: this.items.length === 0 ? 1 : +lastItem.id +1,
       val:this.val,
       date: Date.now(),
       description: this.description,
