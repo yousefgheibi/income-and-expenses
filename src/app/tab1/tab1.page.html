@@ -7,5 +7,21 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+    <ion-list lines="full" class="py-5 px-3">
+        <ion-item>
+            <ion-label position="stacked">وجه نقد</ion-label>
+            <ion-input type="number" [(ngModel)]="val" placeholder="مثل 20000 تومان"></ion-input>
+        </ion-item>
+        <ion-item class="pt-3">
+            <ion-label position="stacked">از بابت</ion-label>
+            <ion-input type="text" [(ngModel)]="description" placeholder="مثل خرید بستنی"></ion-input>
+        </ion-item>
+    </ion-list>
 
+    <div class="d-flex justify-content-center pt-5">
+        <ion-button color="warning" (click)="register('expenses')">هزینه</ion-button>
+        <ion-button color="danger" (click)="checkValue('mins')"> - </ion-button>
+        <ion-button color="tertiary" (click)="checkValue('plus')"> + </ion-button>
+        <ion-button color="success" (click)="register('income')">درآمد</ion-button>
+    </div>
 </ion-content>
