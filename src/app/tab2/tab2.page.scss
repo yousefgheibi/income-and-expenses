@@ -1,0 +1,28 @@
+.income {
+    background: #d1f3b6;
+}
+
+.expenses {
+    background: #fcc8bd;
+}
+
+ion-card {
+    height: 100px;
+    border: none;
+    -webkit-box-shadow: 0px 0px 15px -1px rgba(117, 117, 117, 0.32);
+    box-shadow: 0px 0px 15px -1px rgba(117, 117, 117, 0.32);
+    p {
+        text-align: left;
+        color: #000;
+        padding-left: 0.5rem;
+        font-size: 1rem !important;
+    }
+}
+
+ion-card-title {
+    font-size: 1.3rem;
+}
+
+td {
+    font-size: 0.9rem;
+}

@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
-interface Budget {
-  val: number;
-  date: string;
-  description: string;
-  type: string;
-};
+import { Budget } from 'src/app/models/budget.model';
+import { BudgetService } from '../services/budget.service';
+
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -16,7 +13,10 @@ export class Tab1Page {
   val: number;
   description: string;
   items: Array<Budget> = [];
-  constructor(private storage: Storage) {
+  thisMonthItems: Array<Budget> = [];
+  sumIncome;
+  sumExpenses;
+  constructor(private budgetService: BudgetService,private storage: Storage) {
     this.val = 1000;
     storage.create();
   }
@@ -25,6 +25,7 @@ export class Tab1Page {
     this.storage.get('items').then((val)=>{
       if(val){
         this.items = val;
+        this.budgetService.calculateResult();
       }
     });
   }
@@ -38,11 +39,12 @@ export class Tab1Page {
     }
     this.items.push({
       val:this.val,
-      date:new Date().toLocaleDateString('fa-IR'),
+      date: Date.now(),
       description: this.description,
       type: ftype
     });
     this.storage.set('items', this.items);
+    this.budgetService.calculateResult();
   }
 
   checkValue(type: string){

@@ -7,5 +7,49 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-card class="income">
+                    <ion-card-header>
+                        <ion-card-title>{{sumIncome | number}} تومان</ion-card-title>
+                    </ion-card-header>
+                    <p>درآمد</p>
+                </ion-card>
+            </ion-col>
+            <ion-col>
+                <ion-card class="expenses">
+                    <ion-card-header>
+                        <ion-card-title>{{sumExpenses | number}} تومان</ion-card-title>
+                    </ion-card-header>
+                    <p>هزینه</p>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">نوع</th>
+                <th scope="col">مبلغ</th>
+                <th scope="col">از بابت</th>
+                <th scope="col">تاریخ</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of thisMonthItems;let i = index">
+                <th scope="row">{{i+1}}</th>
+                <td>{{item.type}}</td>
+                <td>{{item.val | number}} تومان</td>
+                <td>{{item.description}}</td>
+                <td>{{item.date | persianDate }}</td>
+                <td>
+                    <ion-icon name="close-outline"></ion-icon>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </ion-content>

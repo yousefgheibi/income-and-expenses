@@ -1,31 +1,18 @@
-import { Component } from '@angular/core';
-import { Storage } from '@ionic/storage-angular';
+import { Injectable } from '@angular/core';
 import { Budget } from '../models/budget.model';
-import { BudgetService } from '../services/budget.service';
-@Component({
-  selector: 'app-tab2',
-  templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss']
+
+@Injectable({
+  providedIn: 'root'
 })
-export class Tab2Page {
+export class BudgetService {
   val: number;
   description: string;
   items: Array<Budget> = [];
   thisMonthItems: Array<Budget> = [];
   sumIncome: number;
   sumExpenses: number;
-  constructor(private storage: Storage, private budgetService: BudgetService) {
-    storage.create();
 
-  }
-
-  ionViewDidEnter(){
-    const name = this.storage.get('items').then((val)=>
-    {
-      this.items = val;
-      this.calculateResult();
-    });
-  }
+  constructor() { }
 
   calculateResult(){
     this.thisMonthItems = [];
